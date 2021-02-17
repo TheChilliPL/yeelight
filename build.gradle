@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group 'me.patrykanuszczyk'
+version '1.0-SNAPSHOT'
+mainClassName = "me.patrykanuszczyk.yeelight.Application"
+
+repositories {
+    mavenCentral()
+    jcenter()
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.code.findbugs:jsr305:3.0.+'
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.+"
+    implementation "com.zaxxer:HikariCP:3.4.+"
+    implementation "mysql:mysql-connector-java:8.0.+"
+    implementation "net.dv8tion:JDA:4.2.+"
+
+    implementation 'org.slf4j:slf4j-api:1.7.+'
+    runtimeOnly 'org.apache.logging.log4j:log4j-api:2.14.+'
+    implementation 'org.apache.logging.log4j:log4j-core:2.14.+'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.+'
+
+
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.+'
+}
+
+jar {
+    manifest {
+        attributes(
+                "Main-Class": "me.patrykanuszczyk.yeelight.Application"
+        )
+    }
+}
+
+task copyLog4jConfig {
+    doLast {
+        copy {
+            from '.'
+            into "$buildDir/classes/kotlin/main"
+            include 'log4j2.properties'
+        }
+    }
+}
+
+//task run(type: Exec) {
+//    dependsOn jar
+//    group = "execution"
+//    commandLine "java", "-jar", jar.archiveFile.get()
+//}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,6 @@
+me/patrykanuszczyk/yeelight/JoinedLockTest.java
+ me.patrykanuszczyk.yeelight.JoinedLockTest
+me/patrykanuszczyk/yeelight/local/JsonTest.java
+ me.patrykanuszczyk.yeelight.local.JsonTest
+me/patrykanuszczyk/yeelight/http/HttpExchangeCodecTest.java
+ me.patrykanuszczyk.yeelight.http.HttpExchangeCodecTest
